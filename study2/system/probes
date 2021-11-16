@@ -1,0 +1,7 @@
+#includeEtc "caseDicts/postProcessing/probes/probes.cfg"
+
+fields (T GradTMag);
+probeLocations
+(
+       ( -0.9784 0 0.0377143 )
+);

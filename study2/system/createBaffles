@@ -1,0 +1,53 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      createBafflesDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+internalFacesOnly true;
+
+fields true;
+
+// Baffles to create.
+baffles
+{
+    
+       baffleFaces
+    {
+        //- Use predefined faceZone to select faces and orientation.
+        type        faceZone;
+        zoneName    water;
+
+        patches
+        {
+            master
+            {
+                name 		water;
+    		type		patch;
+		patchFields
+	    	{
+               		 #include "./0/include/water"
+		     
+            	} 
+	    }
+            slave { $ {..master}}
+            
+                    
+	 }
+       }
+     
+
+}
+
+
+// ************************************************************************* //
