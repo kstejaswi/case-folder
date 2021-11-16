@@ -1,0 +1,40 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+		U
+                {
+                    type            zeroGradient;
+                }
+               
+		fl
+		{ 
+       		    type            zeroGradient;
+   		 }
+                fs
+   		 {
+    		    type            zeroGradient;
+   		 }
+		H
+   		 {
+        	    type            zeroGradient;
+    		}
+		p
+      		{
+      		    type            zeroGradient;
+   		 }
+                T
+		{
+       		   type 	  	 groovyBC;
+       		   value     	  	 uniform 308;
+       		   gradientExpression 	"gradT";
+        	   fractionExpression 	"0";
+       		   variables		 "Text=308;h=-100;gradT=(T-Text)*h;";
+        	   timelines ();  
+		  }
+
+// ************************************************************************* //
